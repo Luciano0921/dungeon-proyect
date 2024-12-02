@@ -2,7 +2,8 @@
     "name": "dungeon proyect",
     "description": "",
     "dependencies": {
-        "device": "*"
+        "device": "*",
+        "darts": "*"
     },
     "files": [
         "main.blocks",
@@ -22,5 +23,5 @@
     "supportedTargets": [
         "arcade"
     ],
-    "preferredEditor": "tsprj"
+    "preferredEditor": "blocksprj"
 }

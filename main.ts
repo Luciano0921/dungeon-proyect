@@ -1,7 +1,11 @@
+info.onScore(400, function () {
+    spawned = false
+    sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
+})
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
-        hero,
-        [img`
+    Hero,
+    [img`
         . . . . . . f f f f . . . . . . 
         . . . . f f e e e e f f . . . . 
         . . . f e e e f f e e e f . . . 
@@ -18,7 +22,7 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
         . . 4 4 f 4 4 4 4 4 4 f 4 4 . . 
         . . . . . f f f f f f . . . . . 
         . . . . . f f . . f f . . . . . 
-        `, img`
+        `,img`
         . . . . . . . . . . . . . . . . 
         . . . . . . f f f f . . . . . . 
         . . . . f f e e e e f f . . . . 
@@ -35,7 +39,7 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . 4 f 2 2 2 2 2 e d d 4 . . 
         . . . e f f f f f f e e 4 . . . 
         . . . . f f f . . . . . . . . . 
-        `, img`
+        `,img`
         . . . . . . f f f f . . . . . . 
         . . . . f f e e e e f f . . . . 
         . . . f e e e f f e e e f . . . 
@@ -52,7 +56,7 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
         . . 4 4 f 4 4 4 4 4 4 f 4 4 . . 
         . . . . . f f f f f f . . . . . 
         . . . . . f f . . f f . . . . . 
-        `, img`
+        `,img`
         . . . . . . . . . . . . . . . . 
         . . . . . . f f f f . . . . . . 
         . . . . f f e e e e f f . . . . 
@@ -70,17 +74,63 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . 4 e e f f f f f f e . . . 
         . . . . . . . . . f f f . . . . 
         `],
-        100,
-        true
+    100,
+    true
     )
+    north = true
+    south = false
 })
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    projectile = sprites.createProjectileFromSprite(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . 1 . . . . . . . . c b . . . 
+        . . f 1 e e e e e e e b b b . . 
+        . . 1 . . . . . . . . b c . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, Hero, xvelocity(), yvelocity2())
+})
+function xvelocity () {
+    if (east) {
+        return -90
+    } else {
+        return 40
+    }
+    if (west) {
+        return 90
+    } else {
+        return 20
+    }
+}
+function yvelocity2 () {
+    if (north) {
+        return 100
+    } else {
+        return 20
+    }
+    if (south) {
+        return -50
+    } else {
+        return 20
+    }
+}
 controller.down.onEvent(ControllerButtonEvent.Released, function () {
-    animation.stopAnimation(animation.AnimationTypes.All, hero)
+    animation.stopAnimation(animation.AnimationTypes.All, Hero)
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
-        hero,
-        [img`
+    Hero,
+    [img`
         . . . . f f f f f f . . . . . . 
         . . . f 2 f e e e e f f . . . . 
         . . f 2 2 2 f e e e e f f . . . 
@@ -97,7 +147,7 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . f 5 5 4 f e e f . . . . . 
         . . . . f f f f f f . . . . . . 
         . . . . . . f f f . . . . . . . 
-        `, img`
+        `,img`
         . . . . . . . . . . . . . . . . 
         . . . . f f f f f f . . . . . . 
         . . . f 2 f e e e e f f . . . . 
@@ -114,7 +164,7 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
         . . f f 5 5 f e e f f f . . . . 
         . . f f f f f f f f f f . . . . 
         . . . f f f . . . f f . . . . . 
-        `, img`
+        `,img`
         . . . . f f f f f f . . . . . . 
         . . . f 2 f e e e e f f . . . . 
         . . f 2 2 2 f e e e e f f . . . 
@@ -131,7 +181,7 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . f 5 5 4 f e e f . . . . . 
         . . . . f f f f f f . . . . . . 
         . . . . . . f f f . . . . . . . 
-        `, img`
+        `,img`
         . . . . . . . . . . . . . . . . 
         . . . . f f f f f f . . . . . . 
         . . . f 2 f e e e e f f . . . . 
@@ -149,20 +199,27 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
         . . f f f f f f f f f f . . . . 
         . . . f f f . . . f f . . . . . 
         `],
-        100,
-        true
+    100,
+    true
     )
+    west = true
+    east = false
+})
+sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Projectile, function (sprite, otherSprite) {
+    info.changeScoreBy(20)
+    sprites.destroy(projectile)
+    sprites.destroy(enemmy)
 })
 controller.right.onEvent(ControllerButtonEvent.Released, function () {
-    animation.stopAnimation(animation.AnimationTypes.All, hero)
+    animation.stopAnimation(animation.AnimationTypes.All, Hero)
 })
 controller.left.onEvent(ControllerButtonEvent.Released, function () {
-    animation.stopAnimation(animation.AnimationTypes.All, hero)
+    animation.stopAnimation(animation.AnimationTypes.All, Hero)
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
-        hero,
-        [img`
+    Hero,
+    [img`
         . . . . . . f f f f f f . . . . 
         . . . . f f e e e e f 2 f . . . 
         . . . f f e e e e f 2 2 2 f . . 
@@ -179,7 +236,7 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . f e e f 4 5 5 f . . . 
         . . . . . . f f f f f f . . . . 
         . . . . . . . f f f . . . . . . 
-        `, img`
+        `,img`
         . . . . . . . . . . . . . . . . 
         . . . . . . f f f f f f . . . . 
         . . . . f f e e e e f 2 f . . . 
@@ -196,7 +253,7 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . f f f e e f 5 5 f f . . 
         . . . . f f f f f f f f f f . . 
         . . . . . f f . . . f f f . . . 
-        `, img`
+        `,img`
         . . . . . . f f f f f f . . . . 
         . . . . f f e e e e f 2 f . . . 
         . . . f f e e e e f 2 2 2 f . . 
@@ -213,7 +270,7 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . f e e f 4 5 5 f . . . 
         . . . . . . f f f f f f . . . . 
         . . . . . . . f f f . . . . . . 
-        `, img`
+        `,img`
         . . . . . . . . . . . . . . . . 
         . . . . . . f f f f f f . . . . 
         . . . . f f e e e e f 2 f . . . 
@@ -231,17 +288,26 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . f f f f f f f f f f . . 
         . . . . . f f . . . f f f . . . 
         `],
-        100,
-        true
+    100,
+    true
     )
+    east = true
+    west = false
 })
+function Traps (enemyimg: Image, num: number) {
+    for (let index = 0; index < num; index++) {
+        enemmy = sprites.create(enemyimg, SpriteKind.Enemy)
+        enemmy.follow(Hero, 10)
+        tiles.placeOnRandomTile(enemmy, sprites.dungeon.doorClosedNorth)
+    }
+}
 controller.up.onEvent(ControllerButtonEvent.Released, function () {
-    animation.stopAnimation(animation.AnimationTypes.All, hero)
+    animation.stopAnimation(animation.AnimationTypes.All, Hero)
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
-        hero,
-        [img`
+    Hero,
+    [img`
         . . . . . . f f f f . . . . . . 
         . . . . f f f 2 2 f f f . . . . 
         . . . f f f 2 2 2 2 f f f . . . 
@@ -258,7 +324,7 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
         . . 4 4 f 4 4 5 5 4 4 f 4 4 . . 
         . . . . . f f f f f f . . . . . 
         . . . . . f f . . f f . . . . . 
-        `, img`
+        `,img`
         . . . . . . . . . . . . . . . . 
         . . . . . . f f f f . . . . . . 
         . . . . f f f 2 2 f f f . . . . 
@@ -275,7 +341,7 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . f 4 4 5 5 f e e . . . . 
         . . . . f f f f f f f . . . . . 
         . . . . f f f . . . . . . . . . 
-        `, img`
+        `,img`
         . . . . . . f f f f . . . . . . 
         . . . . f f f 2 2 f f f . . . . 
         . . . f f f 2 2 2 2 f f f . . . 
@@ -292,7 +358,7 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
         . . 4 4 f 4 4 5 5 4 4 f 4 4 . . 
         . . . . . f f f f f f . . . . . 
         . . . . . f f . . f f . . . . . 
-        `, img`
+        `,img`
         . . . . . . . . . . . . . . . . 
         . . . . . . f f f f . . . . . . 
         . . . . f f f 2 2 f f f . . . . 
@@ -310,13 +376,58 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . f f f f f f f . . . . 
         . . . . . . . . . f f f . . . . 
         `],
-        100,
-        true
+    100,
+    true
     )
+    south = true
+    north = false
 })
-let hero: Sprite = null
-tiles.setCurrentTilemap(tilemap`level2`)
-hero = sprites.create(img`
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.collectibleInsignia, function (sprite, location) {
+    if (spawned == false) {
+        spawned = true
+        Traps(img`
+            ........................
+            ........................
+            ........................
+            ........................
+            ..........ffff..........
+            ........ff1111ff........
+            .......fb111111bf.......
+            .......f11111111f.......
+            ......fd11111111df......
+            ......fd11111111df......
+            ......fddd1111dddf......
+            ......fbdbfddfbdbf......
+            ......fcdcf11fcdcf......
+            .......fb111111bf.......
+            ......fffcdb1bdffff.....
+            ....fc111cbfbfc111cf....
+            ....f1b1b1ffff1b1b1f....
+            ....fbfbffffffbfbfbf....
+            .........ffffff.........
+            ...........fff..........
+            ........................
+            ........................
+            ........................
+            ........................
+            `, 9)
+    }
+    if (gamepoints == false) {
+        gamepoints = true
+        info.setScore(0)
+        info.setLife(3)
+    }
+})
+let enemmy: Sprite = null
+let west = false
+let east = false
+let projectile: Sprite = null
+let south = false
+let north = false
+let gamepoints = false
+let spawned = false
+let Hero: Sprite = null
+Hero = sprites.create(img`
     . . . . . . f f f f . . . . . . 
     . . . . f f f 2 2 f f f . . . . 
     . . . f f f 2 2 2 2 f f f . . . 
@@ -334,8 +445,9 @@ hero = sprites.create(img`
     . . . . . f f f f f f . . . . . 
     . . . . . f f . . f f . . . . . 
     `, SpriteKind.Player)
-controller.moveSprite(hero)
-tiles.placeOnRandomTile(hero, sprites.dungeon.doorOpenNorth)
-scene.cameraFollowSprite(hero)
-
-
+tiles.setCurrentTilemap(tilemap`level2`)
+controller.moveSprite(Hero)
+scene.cameraFollowSprite(Hero)
+tiles.placeOnRandomTile(Hero, sprites.dungeon.doorLockedWest)
+spawned = false
+gamepoints = false
