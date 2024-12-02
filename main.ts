@@ -1,7 +1,7 @@
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
-    Hero,
-    [img`
+        hero,
+        [img`
         . . . . . . f f f f . . . . . . 
         . . . . f f e e e e f f . . . . 
         . . . f e e e f f e e e f . . . 
@@ -18,7 +18,7 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
         . . 4 4 f 4 4 4 4 4 4 f 4 4 . . 
         . . . . . f f f f f f . . . . . 
         . . . . . f f . . f f . . . . . 
-        `,img`
+        `, img`
         . . . . . . . . . . . . . . . . 
         . . . . . . f f f f . . . . . . 
         . . . . f f e e e e f f . . . . 
@@ -35,7 +35,7 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . 4 f 2 2 2 2 2 e d d 4 . . 
         . . . e f f f f f f e e 4 . . . 
         . . . . f f f . . . . . . . . . 
-        `,img`
+        `, img`
         . . . . . . f f f f . . . . . . 
         . . . . f f e e e e f f . . . . 
         . . . f e e e f f e e e f . . . 
@@ -52,7 +52,7 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
         . . 4 4 f 4 4 4 4 4 4 f 4 4 . . 
         . . . . . f f f f f f . . . . . 
         . . . . . f f . . f f . . . . . 
-        `,img`
+        `, img`
         . . . . . . . . . . . . . . . . 
         . . . . . . f f f f . . . . . . 
         . . . . f f e e e e f f . . . . 
@@ -70,17 +70,17 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . 4 e e f f f f f f e . . . 
         . . . . . . . . . f f f . . . . 
         `],
-    100,
-    true
+        100,
+        true
     )
 })
 controller.down.onEvent(ControllerButtonEvent.Released, function () {
-    animation.stopAnimation(animation.AnimationTypes.All, Hero)
+    animation.stopAnimation(animation.AnimationTypes.All, hero)
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
-    Hero,
-    [img`
+        hero,
+        [img`
         . . . . f f f f f f . . . . . . 
         . . . f 2 f e e e e f f . . . . 
         . . f 2 2 2 f e e e e f f . . . 
@@ -97,7 +97,7 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . f 5 5 4 f e e f . . . . . 
         . . . . f f f f f f . . . . . . 
         . . . . . . f f f . . . . . . . 
-        `,img`
+        `, img`
         . . . . . . . . . . . . . . . . 
         . . . . f f f f f f . . . . . . 
         . . . f 2 f e e e e f f . . . . 
@@ -114,7 +114,7 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
         . . f f 5 5 f e e f f f . . . . 
         . . f f f f f f f f f f . . . . 
         . . . f f f . . . f f . . . . . 
-        `,img`
+        `, img`
         . . . . f f f f f f . . . . . . 
         . . . f 2 f e e e e f f . . . . 
         . . f 2 2 2 f e e e e f f . . . 
@@ -131,7 +131,7 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . f 5 5 4 f e e f . . . . . 
         . . . . f f f f f f . . . . . . 
         . . . . . . f f f . . . . . . . 
-        `,img`
+        `, img`
         . . . . . . . . . . . . . . . . 
         . . . . f f f f f f . . . . . . 
         . . . f 2 f e e e e f f . . . . 
@@ -149,20 +149,20 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
         . . f f f f f f f f f f . . . . 
         . . . f f f . . . f f . . . . . 
         `],
-    100,
-    true
+        100,
+        true
     )
 })
 controller.right.onEvent(ControllerButtonEvent.Released, function () {
-    animation.stopAnimation(animation.AnimationTypes.All, Hero)
+    animation.stopAnimation(animation.AnimationTypes.All, hero)
 })
 controller.left.onEvent(ControllerButtonEvent.Released, function () {
-    animation.stopAnimation(animation.AnimationTypes.All, Hero)
+    animation.stopAnimation(animation.AnimationTypes.All, hero)
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
-    Hero,
-    [img`
+        hero,
+        [img`
         . . . . . . f f f f f f . . . . 
         . . . . f f e e e e f 2 f . . . 
         . . . f f e e e e f 2 2 2 f . . 
@@ -179,7 +179,7 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . f e e f 4 5 5 f . . . 
         . . . . . . f f f f f f . . . . 
         . . . . . . . f f f . . . . . . 
-        `,img`
+        `, img`
         . . . . . . . . . . . . . . . . 
         . . . . . . f f f f f f . . . . 
         . . . . f f e e e e f 2 f . . . 
@@ -196,7 +196,7 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . f f f e e f 5 5 f f . . 
         . . . . f f f f f f f f f f . . 
         . . . . . f f . . . f f f . . . 
-        `,img`
+        `, img`
         . . . . . . f f f f f f . . . . 
         . . . . f f e e e e f 2 f . . . 
         . . . f f e e e e f 2 2 2 f . . 
@@ -213,7 +213,7 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . f e e f 4 5 5 f . . . 
         . . . . . . f f f f f f . . . . 
         . . . . . . . f f f . . . . . . 
-        `,img`
+        `, img`
         . . . . . . . . . . . . . . . . 
         . . . . . . f f f f f f . . . . 
         . . . . f f e e e e f 2 f . . . 
@@ -231,17 +231,17 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . f f f f f f f f f f . . 
         . . . . . f f . . . f f f . . . 
         `],
-    100,
-    true
+        100,
+        true
     )
 })
 controller.up.onEvent(ControllerButtonEvent.Released, function () {
-    animation.stopAnimation(animation.AnimationTypes.All, Hero)
+    animation.stopAnimation(animation.AnimationTypes.All, hero)
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
-    Hero,
-    [img`
+        hero,
+        [img`
         . . . . . . f f f f . . . . . . 
         . . . . f f f 2 2 f f f . . . . 
         . . . f f f 2 2 2 2 f f f . . . 
@@ -258,7 +258,7 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
         . . 4 4 f 4 4 5 5 4 4 f 4 4 . . 
         . . . . . f f f f f f . . . . . 
         . . . . . f f . . f f . . . . . 
-        `,img`
+        `, img`
         . . . . . . . . . . . . . . . . 
         . . . . . . f f f f . . . . . . 
         . . . . f f f 2 2 f f f . . . . 
@@ -275,7 +275,7 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . f 4 4 5 5 f e e . . . . 
         . . . . f f f f f f f . . . . . 
         . . . . f f f . . . . . . . . . 
-        `,img`
+        `, img`
         . . . . . . f f f f . . . . . . 
         . . . . f f f 2 2 f f f . . . . 
         . . . f f f 2 2 2 2 f f f . . . 
@@ -292,7 +292,7 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
         . . 4 4 f 4 4 5 5 4 4 f 4 4 . . 
         . . . . . f f f f f f . . . . . 
         . . . . . f f . . f f . . . . . 
-        `,img`
+        `, img`
         . . . . . . . . . . . . . . . . 
         . . . . . . f f f f . . . . . . 
         . . . . f f f 2 2 f f f . . . . 
@@ -310,12 +310,13 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . f f f f f f f . . . . 
         . . . . . . . . . f f f . . . . 
         `],
-    100,
-    true
+        100,
+        true
     )
 })
-let Hero: Sprite = null
-Hero = sprites.create(img`
+let hero: Sprite = null
+tiles.setCurrentTilemap(tilemap`level2`)
+hero = sprites.create(img`
     . . . . . . f f f f . . . . . . 
     . . . . f f f 2 2 f f f . . . . 
     . . . f f f 2 2 2 2 f f f . . . 
@@ -333,7 +334,8 @@ Hero = sprites.create(img`
     . . . . . f f f f f f . . . . . 
     . . . . . f f . . f f . . . . . 
     `, SpriteKind.Player)
-tiles.setCurrentTilemap(tilemap`level2`)
-controller.moveSprite(Hero)
-scene.cameraFollowSprite(Hero)
-tiles.placeOnRandomTile(Hero, sprites.dungeon.doorOpenNorth)
+controller.moveSprite(hero)
+tiles.placeOnRandomTile(hero, sprites.dungeon.doorOpenNorth)
+scene.cameraFollowSprite(hero)
+
+
