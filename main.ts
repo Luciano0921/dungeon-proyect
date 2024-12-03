@@ -1,7 +1,3 @@
-info.onScore(400, function () {
-    spawned = false
-    sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
-})
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     Hero,
@@ -79,6 +75,10 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     )
     north = true
     south = false
+})
+info.onScore(1000, function () {
+    spawned = false
+    sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     projectile = sprites.createProjectileFromSprite(img`
@@ -415,7 +415,16 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.collectibleInsignia, func
     if (gamepoints == false) {
         gamepoints = true
         info.setScore(0)
-        info.setLife(3)
+        info.setLife(5)
+    }
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    if (HelthTag == false) {
+        HelthTag = true
+        scene.cameraShake(4, 500)
+        info.changeLifeBy(-1)
+        pause(500)
+        HelthTag = false
     }
 })
 let enemmy: Sprite = null
@@ -424,6 +433,7 @@ let east = false
 let projectile: Sprite = null
 let south = false
 let north = false
+let HelthTag = false
 let gamepoints = false
 let spawned = false
 let Hero: Sprite = null
@@ -448,6 +458,7 @@ Hero = sprites.create(img`
 tiles.setCurrentTilemap(tilemap`level2`)
 controller.moveSprite(Hero)
 scene.cameraFollowSprite(Hero)
-tiles.placeOnRandomTile(Hero, sprites.dungeon.doorLockedWest)
+tiles.placeOnRandomTile(Hero, sprites.dungeon.doorOpenNorth)
 spawned = false
 gamepoints = false
+HelthTag = false
