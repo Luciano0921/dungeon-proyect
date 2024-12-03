@@ -102,12 +102,12 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 function xvelocity () {
     if (east) {
-        return -90
+        return -100
     } else {
         return 40
     }
     if (west) {
-        return 90
+        return -100
     } else {
         return 20
     }
@@ -119,7 +119,7 @@ function yvelocity2 () {
         return 20
     }
     if (south) {
-        return -50
+        return 100
     } else {
         return 20
     }
