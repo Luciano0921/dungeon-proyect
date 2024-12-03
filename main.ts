@@ -76,10 +76,6 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     north = true
     south = false
 })
-info.onScore(1000, function () {
-    spawned = false
-    sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
-})
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     projectile = sprites.createProjectileFromSprite(img`
         . . . . . . . . . . . . . . . . 
@@ -126,6 +122,13 @@ function yvelocity2 () {
 }
 controller.down.onEvent(ControllerButtonEvent.Released, function () {
     animation.stopAnimation(animation.AnimationTypes.All, Hero)
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.doorLockedWest, function (sprite, location) {
+    if (winPoints == false) {
+        winPoints = true
+        info.changeScoreBy(1)
+        pause(2000)
+    }
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
@@ -206,7 +209,6 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     east = false
 })
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Projectile, function (sprite, otherSprite) {
-    info.changeScoreBy(20)
     sprites.destroy(projectile)
     sprites.destroy(enemmy)
 })
@@ -382,6 +384,9 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     south = true
     north = false
 })
+info.onScore(5, function () {
+    game.gameOver(true)
+})
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.collectibleInsignia, function (sprite, location) {
     if (spawned == false) {
         spawned = true
@@ -414,17 +419,16 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.collectibleInsignia, func
     }
     if (gamepoints == false) {
         gamepoints = true
-        info.setScore(0)
         info.setLife(5)
     }
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
-    if (HelthTag == false) {
-        HelthTag = true
+    if (winPoints == false) {
+        winPoints = true
         scene.cameraShake(4, 500)
         info.changeLifeBy(-1)
         pause(500)
-        HelthTag = false
+        winPoints = false
     }
 })
 let enemmy: Sprite = null
@@ -433,7 +437,7 @@ let east = false
 let projectile: Sprite = null
 let south = false
 let north = false
-let HelthTag = false
+let winPoints = false
 let gamepoints = false
 let spawned = false
 let Hero: Sprite = null
@@ -455,10 +459,13 @@ Hero = sprites.create(img`
     . . . . . f f f f f f . . . . . 
     . . . . . f f . . f f . . . . . 
     `, SpriteKind.Player)
+Hero.sayText("I need to collect all the fires", 500, false)
 tiles.setCurrentTilemap(tilemap`level2`)
 controller.moveSprite(Hero)
 scene.cameraFollowSprite(Hero)
 tiles.placeOnRandomTile(Hero, sprites.dungeon.doorOpenNorth)
+info.setScore(0)
 spawned = false
 gamepoints = false
-HelthTag = false
+winPoints = false
+winPoints = false
