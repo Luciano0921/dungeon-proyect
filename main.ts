@@ -459,7 +459,7 @@ Hero = sprites.create(img`
     . . . . . f f f f f f . . . . . 
     . . . . . f f . . f f . . . . . 
     `, SpriteKind.Player)
-Hero.sayText("I need to collect all the fires", 500, false)
+Hero.sayText("I need to collect ALL the fires", 500, false)
 tiles.setCurrentTilemap(tilemap`level2`)
 controller.moveSprite(Hero)
 scene.cameraFollowSprite(Hero)
